@@ -1,22 +1,22 @@
 package projects.egsal.myjobsearchhelper;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+
+import projects.egsal.myjobsearchhelper.database.Opportunity;
+import projects.egsal.myjobsearchhelper.database.OpportunityCursorAdapter;
 
 public class JobSearchHome extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -30,6 +30,7 @@ public class JobSearchHome extends AppCompatActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+    private ListView itemView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,8 @@ public class JobSearchHome extends AppCompatActivity
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
-
+        // set up the listView
+        itemView = (ListView) findViewById(R.id.itemSelect);
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
@@ -51,27 +53,31 @@ public class JobSearchHome extends AppCompatActivity
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, MainListFragment.newInstance(position + 1))
                 .commit();
     }
 
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_section1);
+                mTitle = getString(R.string.interview_section);
+                Cursor opportunityCursor = Opportunity.fetchOpportunities();
+                OpportunityCursorAdapter adapter = new OpportunityCursorAdapter(this, opportunityCursor, 0);
+                itemView.setAdapter(adapter);
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
+                mTitle = getString(R.string.company_section);
+
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
+                mTitle = getString(R.string.recruiter_section);
                 break;
         }
     }
 
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
@@ -108,7 +114,7 @@ public class JobSearchHome extends AppCompatActivity
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class MainListFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -119,15 +125,15 @@ public class JobSearchHome extends AppCompatActivity
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
+        public static MainListFragment newInstance(int sectionNumber) {
+            MainListFragment fragment = new MainListFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
             return fragment;
         }
 
-        public PlaceholderFragment() {
+        public MainListFragment() {
         }
 
         @Override

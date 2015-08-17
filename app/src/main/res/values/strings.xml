@@ -1,14 +1,25 @@
 <resources>
-    <string name="app_name">MyJobSearchHelper</string>
+    <string name="app_name">Job Search Info</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="interview_section">Opportunity</string>
+    <string name="company_section">Companies</string>
+    <string name="recruiter_section">Recruiters</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_example">Example action</string>
+    <string name="action_new_item">New...</string>
+    <string name="action_help_item">About</string>
+    <string name="error_opportunity_name">Error Loading Name from DB.</string>
+    <string name="error_opportunity_status">Error Loading Opportunity\'s Status from Database.</string>
 
-    <string name="action_settings">Settings</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_opportunity_title">New Opportunity</string>
+    <string name="new_opportunity_company">Organization:</string>
+    <string name="new_opportunity_status">Status of Relationship:</string>
+    <string name="new_opportunity_location">Location:</string>
+    <string name="new_opportunity_notes">Notes:</string>
+    <string name="new_opportunity_add_contact">Not Implemented</string>
+    <string name="new_opportunity_save">Save</string>
 </resources>

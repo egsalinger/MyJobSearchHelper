@@ -1,0 +1,123 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="projects.egsal.myjobsearchhelper.NewOpportunityFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="left|top">
+
+        <TextView
+            android:layout_width="386dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/new_opportunity_title"
+            android:id="@+id/new_opportunity_title"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_columnSpan="12"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/new_opportunity_company"
+            android:id="@+id/textView2"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/new_opportunity_title"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:layout_alignTop="@+id/textView2"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/new_opportunity_status"
+            android:id="@+id/textView"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/status"
+            android:layout_alignTop="@+id/textView"
+            android:layout_alignEnd="@+id/name"
+            android:layout_toEndOf="@+id/textView"
+            android:layout_alignBottom="@+id/textView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/new_opportunity_location"
+            android:id="@+id/textView3"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/location"
+            android:layout_alignEnd="@+id/status"
+            android:layout_toEndOf="@+id/textView3"
+            android:layout_alignTop="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/notes"
+            android:layout_below="@+id/textView4"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/new_opportunity_notes"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/button"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_opportunity_add_contact"
+            android:id="@+id/button"
+            android:enabled="false"
+            android:layout_below="@+id/location"
+            android:layout_alignEnd="@+id/location" />
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_opportunity_save"
+        android:id="@+id/new_opportunity_save"
+        android:layout_gravity="right|top" />
+</FrameLayout>
